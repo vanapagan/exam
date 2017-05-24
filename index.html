@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>Exam</title>
+
+    <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+    <link rel="stylesheet" href="/styles/angular-material/angular-material.css" />
+    <link rel="stylesheet" href="/styles/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/styles.css" />
+</head>
+
+<body>
+    <div ng-controller="mainController" ng-cloak>
+        <md-content class="md-padding" md-selected="data.selectedIndex">
+            <md-tabs md-selected="selectedIndex" md-dynamic-height="true">
+                <md-tab>
+                    <md-tab-label>Players</md-tab-label>
+                    <md-tab-body>
+                        <br />
+                        <form layout="row" layout-align="start start" ng-submit="search()" novalidate>
+                            <md-input-container>
+                                <label>Start typing to filter</label>
+                                <input ng-model="filterPlayers" autofocus ng-change="changeFilterPlayers()">
+                            </md-input-container>
+                        </form>
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th class="col-xs-1">Id</th>
+                                    <th class="col-xs-4">Name</th>
+                                    <th class="col-xs-1">Number</th>
+                                    <th class="col-xs-4">Team</th>
+                                    <th class="col-xs-2"></th>
+                                </tr>
+                            </thead>
+                            <tbody ng-model="players">
+                                <tr ng-repeat="p in players | filter: filterPlayers">
+                                    <td>{{p.id}}</td>
+                                    <td>{{p.name}}</td>
+                                    <td>{{p.number}}</td>
+                                    <td>{{p.team}}</td>
+                                    <td align="center"><img class="icon" src="/images/icon-delete.png" alt="delete" ng-click="deletePlayer(p.id)"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </md-tab-body>
+                </md-tab>
+                <md-tab>
+                    <md-tab-label>Teams</md-tab-label>
+                    <md-tab-body>
+                        <br />
+                        <form layout="row" layout-align="start start" ng-submit="search()" novalidate>
+                            <md-input-container>
+                                <label>Start typing to filter</label>
+                                <input ng-model="filterTeams" autofocus ng-change="changeFilterTeams()">
+                            </md-input-container>
+                        </form>
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th class="col-xs-10">Name</th>
+                                    <th class="col-xs-2"></th>
+                                </tr>
+                            </thead>
+                            <tbody ng-model="teams">
+                                <tr ng-repeat="t in teams | filter: filterTeams">
+                                    <td>{{t.name}}</td>
+                                    <td align="center"><img class="icon" src="/images/icon-delete.png" alt="delete" ng-click="deleteTeam(t.number)"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </md-tab-body>
+                </md-tab>
+                <md-tab>
+                    <md-tab-label>Add Player</md-tab-label>
+                    <md-tab-body>
+                        <form layout="row" layout-align="start start" ng-submit="addPlayer()" novalidate>
+                            <md-input-container>
+							<label>Team</label>
+							<md-select ng-model="team">
+								<md-option ng-repeat="t in teams" value="{{t.name}}">
+									{{t.name}}
+								</md-option>
+							</md-select>
+							</md-input-container>
+                            <md-input-container>
+                                <label>Number</label>
+                                <input ng-model="number" autofocus>
+                            </md-input-container>
+                            <md-input-container>
+                                <label>Name</label>
+                                <input ng-model="name" autofocus>
+                            </md-input-container>
+                            <br />
+                            <md-button type="submit" class="md-primary md-raised">Add new</md-button>
+                        </form>
+                    </md-tab-body>
+                </md-tab>
+                <md-tab>
+                    <md-tab-label>Add Team</md-tab-label>
+                    <md-tab-body>
+                        <form layout="column" layout-align="start start" ng-submit="addTeam()" novalidate>
+                            <md-input-container>
+                                <label>Team name</label>
+                                <input ng-model="teamName" autofocus>
+                            </md-input-container>
+                            <br />
+                            <md-button type="submit" class="md-primary md-raised">Add new</md-button>
+                        </form>
+                    </md-tab-body>
+                </md-tab>
+            </md-tabs>
+        </md-content>
+    </div>
+    <script src="/scripts/jquery/dist/jquery.js"></script>
+    <script src="/scripts/angular/angular.js"></script>
+    <script src="/scripts/angular-aria/angular-aria.js"></script>
+    <script src="/scripts/angular-animate/angular-animate.js"></script>
+    <script src="/scripts/angular-material/angular-material.js"></script>
+    <script src="/app.js"></script>
+</body>
+
+</html>
