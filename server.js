@@ -41,11 +41,11 @@ app.post('/cars', function (req, res) {
     });
 })
 
-app.get('/players/:id', function (req, res) {
-    fs.readFile(__dirname + "/" + "players.json", 'utf8', function (err, data) {
-        var players = JSON.parse(data);
-        for (var i = 0; i < players.length; i++) {
-            var player = players[i];
+app.get('/cars/:id', function (req, res) {
+    fs.readFile(__dirname + "/" + "cars.json", 'utf8', function (err, data) {
+        var cars = JSON.parse(data);
+        for (var i = 0; i < cars.length; i++) {
+            var player = cars[i];
             if (player.id == req.params.id) {
                 console.log(player);
                 res.end(JSON.stringify(player));
@@ -54,14 +54,14 @@ app.get('/players/:id', function (req, res) {
     });
 })
 
-app.delete('/players/:id', function (req, res) {
-    fs.readFile(__dirname + "/" + "players.json", 'utf8', function (err, data) {
-        var players = JSON.parse(data);
-        for (var i = 0; i < players.length; i++) {
-            var player = players[i];
+app.delete('/cars/:id', function (req, res) {
+    fs.readFile(__dirname + "/" + "cars.json", 'utf8', function (err, data) {
+        var cars = JSON.parse(data);
+        for (var i = 0; i < cars.length; i++) {
+            var player = cars[i];
             if (player.id == req.params.id) {
-                players.splice(i, 1);
-                fs.writeFile(__dirname + "/" + "players.json", JSON.stringify(players), function (err) {
+                cars.splice(i, 1);
+                fs.writeFile(__dirname + "/" + "cars.json", JSON.stringify(cars), function (err) {
                     if (err) throw err;
                     res.end("Successfully deleted");
                 });
