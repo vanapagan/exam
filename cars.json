@@ -1,0 +1,22 @@
+[
+    {
+        "id": "0",
+        "brand": "BMW",
+        "model": "320d"
+    },
+    {
+        "id": "1",
+        "brand": "Audi",
+        "model": "A4"
+    },
+    {
+        "id": "2",
+        "brand": "Volkswagen",
+        "model": "Passat"
+    },
+    {
+        "id": "3",
+        "brand": "BMW",
+        "model": "330d"
+    }
+]

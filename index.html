@@ -17,65 +17,37 @@
         <md-content class="md-padding" md-selected="data.selectedIndex">
             <md-tabs md-selected="selectedIndex" md-dynamic-height="true">
                 <md-tab>
-                    <md-tab-label>Players</md-tab-label>
+                    <md-tab-label>Cars</md-tab-label>
                     <md-tab-body>
                         <br />
                         <form layout="row" layout-align="start start" ng-submit="search()" novalidate>
                             <md-input-container>
                                 <label>Start typing to filter</label>
-                                <input ng-model="filterPlayers" autofocus ng-change="changeFilterPlayers()">
+                                <input ng-model="filterCars" autofocus ng-change="changeFilterCars()">
                             </md-input-container>
                         </form>
                         <table class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th class="col-xs-1">Id</th>
-                                    <th class="col-xs-4">Name</th>
-                                    <th class="col-xs-1">Number</th>
-                                    <th class="col-xs-4">Team</th>
+                                    <th class="col-xs-1">#</th>
+                                    <th class="col-xs-4">Brand</th>
+                                    <th class="col-xs-1">Model</th>
                                     <th class="col-xs-2"></th>
                                 </tr>
                             </thead>
-                            <tbody ng-model="players">
-                                <tr ng-repeat="p in players | filter: filterPlayers">
-                                    <td>{{p.id}}</td>
-                                    <td>{{p.name}}</td>
-                                    <td>{{p.number}}</td>
-                                    <td>{{p.team}}</td>
-                                    <td align="center"><img class="icon" src="/images/icon-delete.png" alt="delete" ng-click="deletePlayer(p.id)"></td>
+                            <tbody ng-model="cars">
+                                <tr ng-repeat="c in cars | filter: filterCars">
+                                    <td>{{c.id}}</td>
+                                    <td>{{c.brand}}</td>
+                                    <td>{{c.model}}</td>
+                                    <td align="center"><img class="icon" src="/images/icon-delete.png" alt="delete" ng-click="deleteCar(c.id)"></td>
                                 </tr>
                             </tbody>
                         </table>
                     </md-tab-body>
                 </md-tab>
                 <md-tab>
-                    <md-tab-label>Teams</md-tab-label>
-                    <md-tab-body>
-                        <br />
-                        <form layout="row" layout-align="start start" ng-submit="search()" novalidate>
-                            <md-input-container>
-                                <label>Start typing to filter</label>
-                                <input ng-model="filterTeams" autofocus ng-change="changeFilterTeams()">
-                            </md-input-container>
-                        </form>
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th class="col-xs-10">Name</th>
-                                    <th class="col-xs-2"></th>
-                                </tr>
-                            </thead>
-                            <tbody ng-model="teams">
-                                <tr ng-repeat="t in teams | filter: filterTeams">
-                                    <td>{{t.name}}</td>
-                                    <td align="center"><img class="icon" src="/images/icon-delete.png" alt="delete" ng-click="deleteTeam(t.number)"></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </md-tab-body>
-                </md-tab>
-                <md-tab>
-                    <md-tab-label>Add Player</md-tab-label>
+                    <md-tab-label>Add Car</md-tab-label>
                     <md-tab-body>
                         <form layout="row" layout-align="start start" ng-submit="addPlayer()" novalidate>
                             <md-input-container>
@@ -93,19 +65,6 @@
                             <md-input-container>
                                 <label>Name</label>
                                 <input ng-model="name" autofocus>
-                            </md-input-container>
-                            <br />
-                            <md-button type="submit" class="md-primary md-raised">Add new</md-button>
-                        </form>
-                    </md-tab-body>
-                </md-tab>
-                <md-tab>
-                    <md-tab-label>Add Team</md-tab-label>
-                    <md-tab-body>
-                        <form layout="column" layout-align="start start" ng-submit="addTeam()" novalidate>
-                            <md-input-container>
-                                <label>Team name</label>
-                                <input ng-model="teamName" autofocus>
                             </md-input-container>
                             <br />
                             <md-button type="submit" class="md-primary md-raised">Add new</md-button>

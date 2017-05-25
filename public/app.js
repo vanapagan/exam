@@ -2,16 +2,16 @@ var app = angular.module('myApp', ['ngMaterial']);
 
 app.controller('mainController', function ($scope, $http) {
 
-    var listPlayers = function () {
+    var listCars = function () {
         return $http({
             method: 'GET',
-            url: '/players'
+            url: '/cars'
         });
     };
 
-    function updatePlayersList() {
-        listPlayers().then(function successCallback(response) {
-            $scope.players = response.data;
+    function updateCarsList() {
+        listCars().then(function successCallback(response) {
+            $scope.cars = response.data;
         }, function errorCallback(response) {
         });
     }
@@ -19,7 +19,7 @@ app.controller('mainController', function ($scope, $http) {
     var listTeams = function () {
         return $http({
             method: 'GET',
-            url: '/teams'
+            url: '/carbrands'
         });
     };
 
@@ -30,56 +30,53 @@ app.controller('mainController', function ($scope, $http) {
         });
     }
 
-    updatePlayersList();
+    updateCarsList();
     updateTeamsList();
 
-    $scope.team = "Rakvere Tarvas";
-    $scope.name = 'Kristo Palo';
-    $scope.number = "66";
+    $scope.brand = 'BMW';
+    $scope.model = '530';
 
-    $scope.filterPlayers = "";
-    $scope.filterTeams = "";
-    $scope.msg = "";
+    $scope.filterCars = "";
 
     $scope.data = {
         selectedIndex: 0
     };
 
     $scope.next = function () {
-        $scope.data.selectedIndex = Math.min($scope.data.selectedIndex + 1, 3);
+        $scope.data.selectedIndex = Math.min($scope.data.selectedIndex + 1, 2);
     };
 
     $scope.previous = function () {
         $scope.data.selectedIndex = Math.max($scope.data.selectedIndex - 1, 0);
     };
 
-    var deletePlayer = function (id) {
-        return $http.delete("/players" + "/" + id);
+    var deleteCar = function (id) {
+        return $http.delete("/cars" + "/" + id);
     }
 
-    $scope.deletePlayer = function (id) {
-        deletePlayer(id).then(function successCallback(response) {
-            updatePlayersList();
+    $scope.deleteCar = function (id) {
+        deleteCar(id).then(function successCallback(response) {
+            updateCarsList();
         }, function errorCallback(response) {
             return response;
         });
     };
 
     var addNewPlayer = function (data) {
-        return $http.post("/players", data);
+        return $http.post("/cars", data);
     };
 
-    $scope.addPlayer = function () {
+    $scope.addCar = function () {
         if ($scope.name != null && $scope.name != "") {
             var req = {
                 method: 'POST',
-                url: '/players',
-                data: { name: $scope.name, number: $scope.number, team: $scope.team }
+                url: '/cars',
+                data: { brand: $scope.brand, model: $scope.model}
             };
             $http(req).then(function successCallback(response) {
-                updatePlayersList();
-                $scope.name = '';
-                $scope.team = '';
+                updateCarsList();
+                $scope.brand = '';
+                $scope.model = '';
                 $scope.number = '';
             }, function errorCallback(response) {
                 return response;

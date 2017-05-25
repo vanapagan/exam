@@ -19,23 +19,22 @@ app.get('/', function (req, res) {
     res.sendFile(__dirname + '/index.html');
 });
 
-app.get('/players', function (req, res) {
-    fs.readFile(__dirname + "/" + "players.json", 'utf8', function (err, data) {
+app.get('/cars', function (req, res) {
+    fs.readFile(__dirname + "/" + "cars.json", 'utf8', function (err, data) {
         console.log(data);
         res.end(data);
     });
 })
 
-app.post('/players', function (req, res) {
+app.post('/cars', function (req, res) {
     console.log(req);
-    var team = req.body.team;
-    var number = req.body.number;
-    var name = req.body.name;
-    fs.readFile(__dirname + "/" + "players.json", 'utf8', function (err, data) {
+    var brand = req.body.brand;
+    var model = req.body.model;
+    fs.readFile(__dirname + "/" + "cars.json", 'utf8', function (err, data) {
         data = JSON.parse(data);
-        data.push({ "id": getMaxId(data), "name": name, "team": team, "number": number });
+        data.push({ "id": getMaxId(data), "brand": name, "model": brand});
         res.end(JSON.stringify(data));
-        fs.writeFile(__dirname + "/" + "players.json", JSON.stringify(data), function (err) {
+        fs.writeFile(__dirname + "/" + "cars.json", JSON.stringify(data), function (err) {
             if (err) throw err;
             console.log('file saved');
         });
