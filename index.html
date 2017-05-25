@@ -34,6 +34,7 @@
                                     <th class="col-xs-3">Model</th>
                                     <th class="col-xs-2">Registration number</th>
                                     <th class="col-xs-1">Power (kW)</th>
+                                    <th class="col-xs-1">Year</th>
                                     <th class="col-xs-2"></th>
                                 </tr>
                             </thead>
@@ -44,6 +45,7 @@
                                     <td>{{c.model}}</td>
                                     <td>{{c.regnumber}}</td>
                                     <td>{{c.power}}</td>
+                                    <td>{{c.year}}</td>
                                     <td align="center"><img class="icon" src="/images/icon-delete.png" alt="delete" ng-click="deleteCar(c.id)"></td>
                                 </tr>
                             </tbody>
@@ -77,6 +79,10 @@
                             <md-input-container>
                                 <label>Power (kW)</label>
                                 <input type="number" ng-model="power" autofocus>
+                            </md-input-container>
+                            <md-input-container>
+                                <label>Year</label>
+                                <input type="number" ng-model="year" autofocus>
                             </md-input-container>
                             <br />
                             <md-button type="submit" class="md-primary md-raised">Add new</md-button>

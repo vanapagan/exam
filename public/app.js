@@ -37,6 +37,7 @@ app.controller('mainController', function ($scope, $http) {
     $scope.model = "320d";
     $scope.regnumber = '123XFX';
     $scope.power = 110;
+    $scope.year = 1999;
     $scope.carModels = [];
 
     $scope.isBrandSelected = function () {
@@ -104,7 +105,7 @@ app.controller('mainController', function ($scope, $http) {
             var req = {
                 method: 'POST',
                 url: '/cars',
-                data: { brand: $scope.brand, model: $scope.model , regnumber: $scope.regnumber, power: $scope.power}
+                data: { brand: $scope.brand, model: $scope.model , regnumber: $scope.regnumber, power: $scope.power, year: $scope.year}
             };
             $http(req).then(function successCallback(response) {
                 updateCarsList();
@@ -112,6 +113,7 @@ app.controller('mainController', function ($scope, $http) {
                 $scope.model = '';
                 $scope.regnumber = '';
                 $scope.power = 0;
+                $scope.year = 0;
             }, function errorCallback(response) {
                 return response;
             });
