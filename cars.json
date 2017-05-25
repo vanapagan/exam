@@ -1,1 +1,23 @@
-[{"id":"0","brand":"BMW","model":"320d","regnumber":"123ABC"},{"id":"1","brand":"Audi","model":"A4","regnumber":"456KLM"},{"id":"2","brand":"Volkswagen","model":"Passat","regnumber":"321XXX"}]
+[
+    {
+        "id": "0",
+        "brand": "BMW",
+        "model": "320d",
+        "regnumber": "123ABC",
+        "power": 110
+    },
+    {
+        "id": "1",
+        "brand": "Audi",
+        "model": "A4",
+        "regnumber": "456KLM",
+        "power": 98
+    },
+    {
+        "id": "2",
+        "brand": "Volkswagen",
+        "model": "Passat",
+        "regnumber": "321XXX",
+        "power": 81
+    }
+]

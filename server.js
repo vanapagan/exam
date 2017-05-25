@@ -31,9 +31,10 @@ app.post('/cars', function (req, res) {
     var brand = req.body.brand;
     var model = req.body.model;
     var regnumber = req.body.regnumber;
+    var power = req.body.power;
     fs.readFile(__dirname + "/" + "cars.json", 'utf8', function (err, data) {
         data = JSON.parse(data);
-        data.push({ "id": getMaxId(data), "brand": brand, "model": model, "regnumber": regnumber});
+        data.push({ "id": getMaxId(data), "brand": brand, "model": model, "regnumber": regnumber, "power": power});
         res.end(JSON.stringify(data));
         fs.writeFile(__dirname + "/" + "cars.json", JSON.stringify(data), function (err) {
             if (err) throw err;
