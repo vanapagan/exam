@@ -30,8 +30,9 @@
                             <thead>
                                 <tr>
                                     <th class="col-xs-1">#</th>
-                                    <th class="col-xs-4">Brand</th>
-                                    <th class="col-xs-1">Model</th>
+                                    <th class="col-xs-3">Brand</th>
+                                    <th class="col-xs-3">Model</th>
+                                    <th class="col-xs-3">Registration number</th>
                                     <th class="col-xs-2"></th>
                                 </tr>
                             </thead>
@@ -40,6 +41,7 @@
                                     <td>{{c.id}}</td>
                                     <td>{{c.brand}}</td>
                                     <td>{{c.model}}</td>
+                                    <td>{{c.regnumber}}</td>
                                     <td align="center"><img class="icon" src="/images/icon-delete.png" alt="delete" ng-click="deleteCar(c.id)"></td>
                                 </tr>
                             </tbody>
@@ -59,8 +61,9 @@
                                 </md-select>
                             </md-input-container>
                             <md-input-container>
+                                <label>Model</label>
                                 <md-select ng-model="model">
-                                    <md-option ng-repeat="m in carModels" value="{{m.id}}">
+                                    <md-option ng-repeat="m in carModels" value="{{m.name}}">
                                         {{m.name}}
                                     </md-option>
                                 </md-select>

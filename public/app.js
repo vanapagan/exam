@@ -33,9 +33,10 @@ app.controller('mainController', function ($scope, $http) {
     updateCarsList();
     updateCarBrandsList();
 
-    $scope.brand = '';
+    $scope.brand = 'BMW';
+    $scope.model = "320d";
+    $scope.regnumber = '123XFX';
     $scope.carModels = [];
-    $scope.regnumber = '';
 
     $scope.isBrandSelected = function () {
         if ($scope.brand != null && $scope.brand != "") {
@@ -97,17 +98,18 @@ app.controller('mainController', function ($scope, $http) {
     };
 
     $scope.addCar = function () {
-        if ($scope.name != null && $scope.name != "") {
+        if ($scope.model != null && $scope.model != "") {
+            console.log("tere");
             var req = {
                 method: 'POST',
                 url: '/cars',
-                data: { brand: $scope.brand, model: $scope.model }
+                data: { brand: $scope.brand, model: $scope.model , regnumber: $scope.regnumber}
             };
             $http(req).then(function successCallback(response) {
                 updateCarsList();
                 $scope.brand = '';
                 $scope.model = '';
-                $scope.number = '';
+                $scope.regnumber = '';
             }, function errorCallback(response) {
                 return response;
             });
