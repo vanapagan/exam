@@ -16,25 +16,55 @@ app.controller('mainController', function ($scope, $http) {
         });
     }
 
-    var listTeams = function () {
+    var listBrands = function () {
         return $http({
             method: 'GET',
             url: '/carbrands'
         });
     };
 
-    function updateTeamsList() {
-        listTeams().then(function successCallback(response) {
-            $scope.teams = response.data;
+    function updateCarBrandsList() {
+        listBrands().then(function successCallback(response) {
+            $scope.carBrands = response.data;
         }, function errorCallback(response) {
         });
     }
 
     updateCarsList();
-    updateTeamsList();
+    updateCarBrandsList();
 
-    $scope.brand = 'BMW';
-    $scope.model = '530';
+    $scope.brand = '';
+    $scope.carModels = [];
+    $scope.regnumber = '';
+
+    $scope.isBrandSelected = function () {
+        if ($scope.brand != null && $scope.brand != "") {
+            updateCarModelsList();
+        }
+    }
+
+    var listModels = function () {
+        return $http({
+            method: 'GET',
+            url: '/carmodels'
+        });
+    };
+
+    function updateCarModelsList() {
+        listModels().then(function successCallback(response) {
+            var carBrands = response.data;
+            if ($scope.carBrands != null && $scope.carBrands.length > 0 && $scope.brand != null && $scope.brand != "") {
+                for (var i = 0; i < carBrands.length; i++) {
+                    var brand = carBrands[i];
+                    if ($scope.brand == brand.name) {
+                        console.log(brand.models);
+                        $scope.carModels = brand.models;
+                    }
+                }
+            }
+        }, function errorCallback(response) {
+        });
+    }
 
     $scope.filterCars = "";
 
@@ -71,7 +101,7 @@ app.controller('mainController', function ($scope, $http) {
             var req = {
                 method: 'POST',
                 url: '/cars',
-                data: { brand: $scope.brand, model: $scope.model}
+                data: { brand: $scope.brand, model: $scope.model }
             };
             $http(req).then(function successCallback(response) {
                 updateCarsList();

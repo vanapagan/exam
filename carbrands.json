@@ -1,0 +1,74 @@
+[
+    {
+        "id": "0",
+        "name": "BMW",
+        "models": [
+            {
+                "id": "0",
+                "name": "320"
+            },
+            {
+                "id": "1",
+                "name": "330d"
+            },
+            {
+                "id": "2",
+                "name": "520"
+            }
+        ]
+    },
+    {
+        "id": "1",
+        "name": "Audi",
+        "models": [
+            {
+                "id": "0",
+                "name": "A3"
+            },
+            {
+                "id": "1",
+                "name": "A4"
+            },
+            {
+                "id": "2",
+                "name": "A6"
+            }
+        ]
+    },
+    {
+        "id": "2",
+        "name": "Vokswagen",
+        "models": [
+            {
+                "id": "0",
+                "name": "Passat"
+            },
+            {
+                "id": "1",
+                "name": "Beetle"
+            },
+            {
+                "id": "2",
+                "name": "Golf"
+            }
+        ]
+    },
+    {
+        "id": "3",
+        "name": "Toyota",
+        "models": [
+            {
+                "id": "0",
+                "name": "Hilux"
+            },
+            {
+                "id": "1",
+                "name": "Corolla"
+            },
+            {
+                "id": "2",
+                "name": "Yaris"
+            }
+        ]
+    }
+]

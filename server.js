@@ -70,8 +70,15 @@ app.delete('/cars/:id', function (req, res) {
     });
 })
 
-app.get('/teams', function (req, res) {
-    fs.readFile(__dirname + "/" + "teams.json", 'utf8', function (err, data) {
+app.get('/carbrands', function (req, res) {
+    fs.readFile(__dirname + "/" + "carbrands.json", 'utf8', function (err, data) {
+        console.log(data);
+        res.end(data);
+    });
+})
+
+app.get('/carmodels', function (req, res) {
+    fs.readFile(__dirname + "/" + "carbrands.json", 'utf8', function (err, data) {
         console.log(data);
         res.end(data);
     });
