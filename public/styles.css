@@ -10,3 +10,9 @@ md-tabs {
     width: 1.8em;
     height: 1.8em;
 }
+
+#canvas {
+    margin: 3em;
+    width: 35%;
+    height: 35%;
+}

@@ -1,1 +1,34 @@
-[{"id":"0","brand":"BMW","model":"320d","regnumber":"123ABC","power":110,"year":1998},{"id":"1","brand":"Audi","model":"A4","regnumber":"456KLM","power":98,"year":2001},{"id":"2","brand":"Volkswagen","model":"Passat","regnumber":"321XXX","power":81,"year":1997},{"id":"21","brand":"Vokswagen","model":"Golf","regnumber":"123XFX","power":110,"year":1999}]
+[
+    {
+        "id": "0",
+        "brand": "BMW",
+        "model": "320d",
+        "regnumber": "123ABC",
+        "power": 110,
+        "year": 1998
+    },
+    {
+        "id": "1",
+        "brand": "Audi",
+        "model": "A4",
+        "regnumber": "456KLM",
+        "power": 98,
+        "year": 2001
+    },
+    {
+        "id": "2",
+        "brand": "Volkswagen",
+        "model": "Passat",
+        "regnumber": "321XXX",
+        "power": 81,
+        "year": 1997
+    },
+    {
+        "id": "21",
+        "brand": "Vokswagen",
+        "model": "Golf",
+        "regnumber": "123XFX",
+        "power": 110,
+        "year": 1999
+    }
+]

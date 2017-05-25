@@ -123,15 +123,42 @@ app.controller('mainController', function ($scope, $http) {
     //$scope.labels = ["Download Sales", "In-Store Sales", "Mail-Order Sales"];
     //$scope.data = [300, 500, 100];
 
-    $scope.labels = ["BMW", "Audi", "Volkswagen"];
-    $scope.data = [300, 250, 800];
+    $scope.labels = [];
+    $scope.data = [];
 
     $scope.drawDiagram = function () {
         listCars().then(function successCallback(response) {
+
+            for (var i = 0; i < response.data.length; i++) {
+                var car = response.data[i];
+                if (car.year !=null && car.year >= yearFrom && car.year <= yearTo) {
+                    addToBrandsList(car);
+                }
+            }
+
             
-            $scope.cars = response.data;
+
         }, function errorCallback(response) {
         });
+    }
+
+    var brandsList = [];
+
+    function addToBrandsLis(obj) {
+        var contains = false;
+
+        for (var i = 0; i < brandsList.length; i++) {
+            var brand = brandsList[i];
+
+            if (brand.name == obj.name) {
+                brand.count = (brand.name + 1);
+            }
+        }
+
+        if (!contains) {
+            brandsList.push({"name": obj.name, "count": 0});
+        }
+
     }
 
 });
