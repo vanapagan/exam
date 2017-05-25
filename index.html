@@ -20,6 +20,20 @@
                     <md-tab-label>Cars</md-tab-label>
                     <md-tab-body>
                         <br />
+                        <form layout="row" layout-align="start start" ng-submit="drawDiagram()" novalidate>
+                            <md-input-container>
+                                <label>From</label>
+                                <input type="number" ng-model="yearFrom" autofocus>
+                            </md-input-container>
+                            <md-input-container>
+                                <label>To</label>
+                                <input type="number" ng-model="yearTo" autofocus>
+                            </md-input-container>
+                            <br />
+                            <md-button type="submit" class="md-primary md-raised">Draw Diagram</md-button>
+                        </form>
+                        <canvas id="polar-area" class="chart chart-polar-area" chart-data="data" chart-labels="labels" chart-options="options">
+                        </canvas>
                         <form layout="row" layout-align="start start" ng-submit="search()" novalidate>
                             <md-input-container>
                                 <label>Start typing to filter</label>

@@ -105,7 +105,7 @@ app.controller('mainController', function ($scope, $http) {
             var req = {
                 method: 'POST',
                 url: '/cars',
-                data: { brand: $scope.brand, model: $scope.model , regnumber: $scope.regnumber, power: $scope.power, year: $scope.year}
+                data: { brand: $scope.brand, model: $scope.model, regnumber: $scope.regnumber, power: $scope.power, year: $scope.year }
             };
             $http(req).then(function successCallback(response) {
                 updateCarsList();
@@ -118,6 +118,20 @@ app.controller('mainController', function ($scope, $http) {
                 return response;
             });
         }
+    }
+
+    //$scope.labels = ["Download Sales", "In-Store Sales", "Mail-Order Sales"];
+    //$scope.data = [300, 500, 100];
+
+    $scope.labels = ["BMW", "Audi", "Volkswagen"];
+    $scope.data = [300, 250, 800];
+
+    $scope.drawDiagram = function () {
+        listCars().then(function successCallback(response) {
+            
+            $scope.cars = response.data;
+        }, function errorCallback(response) {
+        });
     }
 
 });
