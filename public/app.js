@@ -1,4 +1,4 @@
-var app = angular.module('myApp', ['ngMaterial']);
+var app = angular.module('myApp', ['ngMaterial', 'chart.js']);
 
 app.controller('mainController', function ($scope, $http) {
 
